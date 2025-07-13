@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstraction</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+    <div class="background"></div>
+    <div class="content">
+    <h1>ABSTRACTION</h1>
+    <div class="abs">
+        <span><a href="#Abstraction">Abstraction</a></span>
+        <span><a href="#AbstractClass">Abstract Class</a></span>
+        <span><a href="#Interface">Interface</a></span>
+    </div>
+
+    <section id="Abstraction">
+        <h2>ABSTRACTION</h2>
+        <p>Programming solutions to application problems consist of components. The process of designing these solutions involves abstraction. In the C programming language, we abstract common code, store it in a structure or function and refer to that structure or function from possibly multiple places in our source code, thereby avoiding code duplication.</p>
+    <p>An object-oriented programming solution to an application problem consists of components called objects. The process of designing an object-oriented solution likewise involves abstraction. We distinguish the most important features of the object, identify them publicly and hide the less important details within the object itself.</p>
+    <div style="text-align: center;"><img src="abstraction.jpg" alt="Abstraction"></div>
+    <p>Each object has a crisp conceptual boundary and acts in ways appropriate to itself. Compare a book with a set of notes. A book has pages that are bound and can be flipped. The page order is fixed. A set of notes consists of loose pages that can be rearranged in any order. We represent the book as an object and the set of notes as another object; each object has a different structure.</p>
+    <p>Example: </p>
+    <ul>
+        <li>An ear cannot see, an eye cannot listen and a mouth cannot smell.</li>
+        <li>A horse cannot bark and a dog cannot croak.</li>
+    </ul>
+    </section>
+    
+    <hr>
+
+    <section id="AbstractClass">
+        <h2>ABSTRACT CLASS</h2>
+        <p>Superclasses tend to be more abstract in their nature than subclasses. The abstract nature is a reflection of the fact that they are OO design constructs intended as a means of avoiding code duplication, and of modelling some real-world problem domain in a more reflective manner.</p>
+        Here, we have two different terminologies: Abstract method and Abstract Class.
+        <div>
+        <p style="background-color:rgb(199, 219, 255); padding: 0.2cm 0.2cm; font-weight: bold; display: inline-block">
+            An abstract method is a signature definition of a method but with no implementation. The implementation of the method falls to any class that extends the class that defined the abstract method.
+        </p>
+        Example:<br><br>
+        <code style="background-color:rgb(1, 33, 64); color:white; padding: 2px; padding-right: 6px; font-weight: bold; display: inline-block">
+public abstract class Item{ 
+	protected int value;
+	ptotected String creator;
+	....
+	public abstract void displayPrice(); 
+	//it is abstract because we lack information to implement.  
+	...         
+} 
+        </code>
+        <p>Method "displayPrice()"" is an abstract method, which it has no detailed implementation, and moreover, the subclasses of class Item have to implement it instead. Now, it is, in some way, like an outline.</p>
+        </div>
+
+            <p style="background-color:rgb(199, 219, 255); padding: 0.2cm 0.2cm; font-weight: bold; display: inline-block">
+                An abstract class is a class that contains one or more abstract method definitions.
+            </p>
+            <p>In the above example code, the addition of the abstract keyword in the class definition itself, the Item class has become an abstract class.</p>
+            <p>Let's continue with that code. We turn to the sub classes. they extend Item, they inherit the abstract definition of the displayDetails() method. They are now required to provide a concrete implementation of that method. The compiler will not regard the sub class definitions as complete until they provide such a concrete implementation.</p>
+        <code style="background-color:rgb(1, 33, 64); color:white; padding: 2px; padding-right: 6px; font-weight: bold; display: inline-block">
+public class Vase extends Item{ 
+	private int height;
+	private String material;
+	...
+	public void displayPrice(){
+        ...
+	}
+}
+        </code>
+    </section>
+
+<hr>
+
+    <section id="Interface">
+        <h2>INTERFACE</h2>
+        <p>Objects define their interaction with the outside world through the methods that they expose. Methods form the object's interface with the outside world</p>
+        <p>Example: The buttons on the front of your television set, the buttons are the interface between you and the electrical wiring on the other side of its plastic casing. You press the "power" button to turn the television on and off.</p>
+        <p>Some OO languages, notably C++, support the notion of multiple inheritance whereby a class can inherit attributes and methods from more than one parent class. This can lead to some challenges where attributes and methods of the same name are to be inherited from different places. Java only permits inheritance from one direct parent class. However, there are situations where it is desirable to able to take on responsibilities from other classes. This is achieved through the concept of an interface</p>
+        <p>As the name suggests, an interface provides a single consistent specification of some functionality that a class is intended to provide. A Java interface can only contain method signatures and fields. It cannot, in general, contain an implementation of the methods. This makes an interface look like an abstract class where all of the methods are abstract. A class can then opt to implement the interface. The implementing class is then obliged to provide a concrete implementation of the interface methods.</p>
+        <p style="background-color:rgb(199, 219, 255); padding: 0.2cm 0.2cm; font-weight: bold; display: inline-block">
+            An interface is a reference type that can contain only constants, initialized fields, static methods, prototypes (abstract methods), default method, and nested types.
+        </p>
+        <p>Example: A customer/calling code will interact with the menu/interface to accomplish something. A chef/called code/implementation code will perform this requirement.</p>
+            <div style="text-align: center;"><img src="interface1.jpg" alt="Interface in real world"></div>
+
+        <h3>WHY AND WHEN TO USE INTERFACES</h3>
+        <P>First of all, it will be the core of some classes. </P>
+        <p>Second, Java does not support "multiple inheritance" (a class can only inherit from one superclass). However, it can be achieved with interfaces, because the class can implement multiple interfaces.
+        </P>
+
+        <h3>MULTIPLE INTERFACES</h3>
+        <p>To implement multiple interfaces, separate them with a comma.</p>
+        <p>Example: </p>
+        <code style="background-color:rgb(1, 33, 64); color:white; padding: 2px; padding-right: 6px; font-weight: bold; display: inline-block">
+public class Chef implements Menu, VIPMenu{ 
+	private String name;
+	....
+	public void getSalad(){
+	   System.out.println("This is a salad");
+    }
+	public void getBeefsteak(){
+		System.out.println("This is a beefsteak");
+    }
+    public void getSalmon(){
+      System.out.println("This is a salmon meal");
+    }
+	public void getFishEggs(){
+      System.out.println("This is a fish eggs");
+    }
+}
+        </code>
+    </section>
+
+    <footer> RE - DESIGNED BY QUYNH ANH DO NGOC</footer>
+</div>
+</body>
+</html>

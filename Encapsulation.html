@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENCAPSULATION</title>
+    <link reL="stylesheet" href="Style.css">
+</head>
+
+<body>
+    <div class="background"></div>
+    <div class="content">
+    <h1>ENCAPSULATION</h1>
+
+    <div class="encaps">
+        <span><a href="#ClassAndObject">Class And Object</a></span>
+        <span><a href="#Constructor">Constructor</a></span>
+        <span><a href="#OverloadingConstructors">Overloading Constructors</a></span>
+        <span><a href="#TheCurrentObject">The Current Object</a></span>
+        <span><a href="#MemberFunctions">Member Functions</a></span>
+        <span><a href="#Package">Package</a></span>
+        <span><a href="#AccessModifier">Access Modifier</a></span>
+    </div>
+
+    <section id="ClassAndObject">
+        <h2>CLASS AND OBJECT</h2>
+        <h3>CLASS</h3>
+        <p style="background-color:rgb(199, 219, 255); padding: 0.2cm 0.2cm; font-weight: bold; display: inline-block">
+            A class is an organisational unit of an Object Oriented design and program
+        </p>
+        <p>A key task in producing an OO design and program is therefore the identification and selection of the most
+            appropriate organisational units.
+            There is no single OO solution for any specific problem, there are just “good” ones and everything else.
+            So we need to establish a set of principles that will help us understand what makes for a “good” choice of
+            an organisational unit or class. We will find that if we choose wisely, our programming task is relatively
+            straightforward.
+            Choose poorly, and our software may be difficult to deliver, hard to maintain and ultimately not a useful
+            solution to our problem - just like an office with poor internal organisation. We can draw on our analysis
+            from the previous section.
+        </p>
+        <p>A good class would exhibit the following characteristics</p>
+
+        <table>
+            <tr>
+                <th>Highly cohesive</th>
+                <th>Minimally coupled</th>
+                <th>Encapsulation</th>
+            </tr>
+            <tr>
+                <td>The class represents a single useful entity or organisational unit and does that job well.</td>
+                <td>The class limits its interactions with other classes to only those that are really necessary for it
+                    to do what it is designed to do.</td>
+                <td>The class limits its interactions with other classes to only those that are really necessary for it
+                    to do what it is designed to do.</td>
+            </tr>
+        </table>
+
+        <p>
+            So whenever we want to create an OO program, we should give thought to the notion of OO design and think
+            about what classes or entities we need to create, using the principles of high cohesion, low coupling and
+            encapsulation as our guide.
+        </p>
+        <p>A formal definition of a class includes two key components: Fields(Attributes) and Methods(Behaviors).</p>
+        <p style="text-decoration: underline ;">Design guideline:</p>
+
+        <div class="indent">
+            <p>Step 1: Looking for main nouns, classes are ofter described by main nouns in the problem.</p>
+            <p>Step 2: Looking for auxiliary nouns that describe details of the main noun, Fields or Attributes are
+                often described by auxiliary nouns.</p>
+            <p>Step 3: Looking for verbs, methods or behaviors are often described by verbs.</p>
+            <p>Step 4: Find the relationship among classes. TIPS: If your problem has two main nouns. They have often
+                the relationship.</p>
+        </div>
+
+        <table>
+            <tr>
+                <th style="width: 55%">Problem</th>
+                <th>Analyze</th>
+            </tr>
+            <tr>
+                <td style="text-align: justify;">A sports car can be one of a variety of colours, with an engine power
+                    between 100 HP and 200 HP. It can be a convertible or a regular model. The car has a button that
+                    starts the engine and a parking brake. When the parking brake is released and you press the
+                    accelerator, it drives in the direction determined by the transmission setting.</td>
+                <td style="text-align: justify;">
+                    <li>Class name: Car</li>
+                    <li>Attribute: Colour (String), Engine power (int), Convertible (boolean), Parking brake (boolean)
+                    </li>
+                    <li>Method: PressStartButton (void), PressAccelerateButton (void)</li>
+                </td>
+            </tr>
+        </table>
+        <p>Now, You will implement this class in Java.</p>
+
+        <h4>OBJECT</h4>
+        <p>In the example above, we used the keyword new to allocate the block memory in the dynamic heap. This block
+            memory ia called the object or the instance of class. This object is create from the Car class and it
+            contains all fields of this class.</p>
+        <p style="background-color:rgb(199, 219, 255); padding: 0.2cm 0.2cm; font-weight: bold; display: inline-block">
+            An Object is the block memory in the dynamic heap. An object is create from a class. Using the keyword new
+            and follow by the class name. You can create multiple objects from one class
+        </p>
+
+        <p>Example: The code "Car c1=new Car" create an object from Car class. This object will contain all fields in
+            the class, which means it can have colour, engine power, convertible attribute, or even the start button to
+            press. An object is like a real, detailed example of a class.</p>
+        <p>Example 2:<br><br>
+            <img src="Object.jpg" alt="Object example">
+        </p>
+
+        <p style="font-weight: bold;">WHY DO WE HAVE TO CREATE OBJECT?</p>
+        <p>Any program contains also data and tasks. Data in the OO program is showed as objects. Therefore, to the OO
+            program operate, we have to create objects. Through these objects we can invoke or perform tasks</p>
+    </section>
+
+    <hr>
+
+    <section id="Constructor">
+        <h2>CONSTRUCTOR</h2>
+        <p>Complete encapsulation requires a mechanism for initializing data members at creation-time. Without
+            initialization at creation-time, an object's data members contain undefined values until client code calls a
+            modifier that sets that data.</p>
+        <p style="background-color:rgb(199, 219, 255); padding: 0.2cm 0.2cm; font-weight: bold; display: inline-block">
+            The special member function that any object invokes at creation-time is called its class' constructor.
+        </p>
+        <p>The special method Car(){...} is the default constructor. It takes its name from the class itself, and the
+            object will be assigned to empty values. When there is no constructor, then the default will be used</p>
+        <p>Values are called the state of object. Initializing an object's instance variables in a constructor ensures
+            that the object has a well-defined state from the time of its creation.</p>
+    </section>
+
+    <hr>
+
+    <section id="OverloadingConstructors">
+        <h2>OVERLOADING CONSTRUCTOR</h2>
+        <p>Overloading a class' constructor adds communication options for client code. Client code can select the most appropriate set of arguments at creation time.</p>
+        <p>Example: Constructor with parameters</p>
+        <img src="ConstructWithParameters.jpg" alt="Constructor with parameters">
+        <p>If the class definition includes the prototype for a constructor with some parameters but does not include the prototype for a no-argument default constructor, the compiler DOES NOT insert an empty-body, no-argument default constructor. The compiler only inserts an empty-body, no-argument default constructor if the class definition does not declare ANY constructor.</p>
+    </section>
+
+    <hr>
+
+    <section id="TheCurrentObject">
+        <h2>THE CURRENT OBJECT</h2>
+        <p>Example: if we have a code "c1.pressAcceleratorButton();", which means c1 invokes the method. the object (is handled by c1) is the current object at the time</p>
+        <p>Example: On the contrary, if c2 is the current object, then the code will be "c2.pressAcceleratorButton();"</p>
+        <h3>THIS</h3>
+        <div style="background-color:rgb(199, 219, 255); padding: 0.2cm 0.2cm; font-weight: bold; display: inline-block">The keyword <a style="font-style: italic; font-weight: bold;">this</a> returns the address of the current object. Or, <a style="font-style: italic; font-weight: bold;">this</a> holds the address of the region of memory that contains all of the data stored in the instance variables of current object.</div>
+        <p>Scope: <a style="font-style: italic; font-weight: bold;">This</a> is created and used just when the member method is called. After the member method terminates <a style="font-style: italic; font-weight: bold;">this</a> will be discarded.</p>
+        <p>If parameters (formal arguments) of a member method and instance variables/fields are same. So, we are using <a style="font-style: italic; font-weight: bold;">this</a> keyword to distinguish local variable and instance variable.</p>
+        <p>Example: </p>
+        <img src="ConstructWithParameters.jpg" alt="The 'this' keyword">
+    </section>
+
+    <hr>
+
+    <section id="MemberFunctions">
+        <h2>MEMBER FUNCTIONS</h2>
+        <p>Member functions are the functions, which have their declaration inside the class definition and work on the data members of the class.</p>
+        
+        <p>Example: </p>
+        <div class="mf">
+            <img src="Fuctions.jpg" alt="Member Function">
+            <p>Obviously, there are four member functions in class Car: Car(); Car(String, int, boolean, boolean); pressStartButton(); pressAcceleratorButton().<br>Two of them are constructor functions, and the remained are the methods.</p>
+                </div>
+    </section>
+
+    <hr>
+
+    <section id="Package">
+        <h2>PACKAGE</h2>
+        <p style="background-color:rgb(199, 219, 255); padding: 0.2cm 0.2cm; font-weight: bold; display: inline-block">
+            A package is a namespace that organizes a set of related classes and interfaces.
+        </p>
+
+        <p>Conceptually you can think of packages as being similar to different folders on your computer.</p>
+        <p>Because software written in the Java programming language can be composed of hundreds or thousands of
+            individual classes, it makes sense to keep things organized by placing related classes and interfaces into
+            packages.</p>
+
+        <h3>Creating a package</h3>
+        <p>To create a package, you choose a name for the package and put a package statement with that name at the top
+            of every source file that contains the types (classes, interfaces, enumerations, and annotation types) that
+            you want to include in the package.</p>
+        <p>The package statement (for example, package mypkg;) must be the first line in the source file. There can be
+            only one package statement in each source file, and it applies to all types in the file.</p>
+        <img src="package.jpg" alt="Package in Java">
+    </section>
+
+    <hr>
+
+    <section id="AccessModifier">
+        <h2>ACCESS MODIFIER</h2>
+        <p>To specify the visibility of a class member (i.e. any attribute or method), we use "access modifiers".</p>
+        <div style="display:flex; flex-wrap: nowrap; gap: 30px; justify-content: center;">
+            <img src="encapsulation21.jpg" alt="AccessModifiers"> 
+            <ul>There are four main access modifiers:
+            <li>private (-)</li>
+            <li>public (+)</li>
+            <li>protected (#)</li>
+            <li>default: if there is no notation, then it is treated as default.</li>
+        </ul>
+        
+</div>
+        <h3>PRIVATE</h3>
+        <p>The <a style="font-weight: bold;">private</a> access modifier is accessible only within the class.</p>
+
+        <p>Example: </p>
+            
+            <code style="background-color:rgb(1, 33, 64); color:white; padding: 1px; padding-right: 6px; font-weight: bold; display: inline-block">
+public class Tester {
+    public static void main(String[] args) {
+        Car c = new Car();
+        c.pressStartButton();
+        c.pressAcceleratorButton();
+
+        Car c2 = new Car();
+        c2.pressAcceleratorButton();
+
+        Car c3 = new Car("red", 100, true, true);
+        c3.pressAcceleratorButton();
+        c3.setColour("black");
+
+        System.out.println("Colour of c3:" + c3.getColour()); <a style="font-style: italic;">// access the instance variable Colour of c</a>
+        c.Colour = "Gray"; <a style="font-style: italic;">//error</a>
+    }
+}
+            </code>
+
+
+        <h3>PUBLIC</h3>
+        <P>The public access modifier is accessible everywhere.</P>
+            <p>In the above example, the Car class is public, since in class Tester, we can access to those methods.</P>
+        
+        <h3>DEFAULT</h3>
+        <p>If you don't use any modifier, it is treated as default by default. The default modifier is accessible only within package. It cannot be accessed from outside the package. It provides more accessibility than private. But, it is more restrictive than protected, and public.</p>
+        <div>
+            Example:
+            <div>
+                <p>Class Car</p>
+                <code style="background-color:rgb(1, 33, 64); color:white; padding: 1px; padding-right: 6px; font-weight: bold; display: inline-block"style="background-color:rgb(1, 33, 64); color:white; padding: 1px; padding-right: 6px; font-weight: bold; display: inline-block">
+package A;
+
+public class Car {
+    <p style="font-style: italic;">//fields</p>
+    private String Colour;
+    private int EnginePower;
+    private boolean Convertible;
+    private boolean parkingBrake;
+    ...
+    void pressStartButton(){
+        System.out.println("You can press the star button");
+    }
+}
+                </code>
+            </div>
+            <div>
+                <p>Class Tester</p>
+                <code style="background-color:rgb(1, 33, 64); color:white; padding: 1px; padding-right: 6px; font-weight: bold; display: inline-block">
+package B;
+import A.Car;
+public class Tester {
+        public static void main(String[] args) {
+          Car c=new Car();
+          c.pressStartButton();<p style="font-style: italic;">//error</p>
+          c.pressAcceleratorButton();
+          
+          Car c2=new Car();
+          c2.pressAcceleratorButton();
+          
+          Car c3=new Car("red", 100, true, true);
+          c3.pressAcceleratorButton();
+          c3.setColour("black");
+          System.out.println("Colour of c3:" + c3.getColour());
+    }
+}
+                </code>
+            </div>
+            <p>Because the method pressStartButton() is default, in the method main we can not invoke this.</p>
+        </div>
+
+        <h3>PROTECTED</h3>  
+        <p>The protected access modifier is accessible within package and outside the package but through inheritance only.</p>
+    
+    </section>
+
+
+    <footer> RE - DESIGNED BY QUYNH ANH DO NGOC</footer>
+</div>
+</body>
+
+</html>
